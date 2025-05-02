@@ -16,6 +16,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             background: linear-gradient(135deg, #a2c2e8, #f7c8c8);
             color: #333;
@@ -45,12 +46,56 @@
             color: #007BFF;
         }
 
+        .carousel {
+            margin-top: 30px;
+            width: 80%;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 1s ease;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
     </style>
 </head>
 <body>
     <div>
         <h1 class="greeting">Hey there, welcome!</h1>
         <p>I'm <span class="name">Aditya</span>, and it's a pleasure to meet you. I’m always excited to connect and share ideas—whether it’s about creativity, life, or just a good conversation.</p>
+        
+        <div class="carousel">
+            <div class="carousel-images">
+                <!-- Exact Car images from the links you provided -->
+                <img src="https://unsplash.com/photos/red-mercedes-benz-coupe-on-road-qyfco1nfMtg" alt="Red Mercedes-Benz Coupe">
+                <img src="https://unsplash.com/photos/blue-chevrolet-coupe-2AovfzYV3rc" alt="Blue Chevrolet Coupe">
+                <img src="https://unsplash.com/photos/running-black-porsche-sedan-3ZUsNJhi_Ik" alt="Black Porsche Sedan">
+                <img src="https://unsplash.com/photos/gray-sports-coupe-parking-during-daytime-6lSBynPRaAQ" alt="Gray Sports Coupe">
+                <img src="https://unsplash.com/photos/black-mercedes-benz-coupe-on-gray-asphalt-road-8qYE6LGHW-c" alt="Black Mercedes-Benz Coupe">
+            </div>
+        </div>
     </div>
+
+    <script>
+        // Auto-play carousel
+        const carouselImages = document.querySelector('.carousel-images');
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel-images img');
+        const totalImages = images.length;
+
+        function moveToNextImage() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            carouselImages.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        setInterval(moveToNextImage, 3000);  // Change image every 3 seconds
+    </script>
 </body>
 </html>
